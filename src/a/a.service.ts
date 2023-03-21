@@ -1,9 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { AModuleConfig, MODULE_OPTIONS_TOKEN } from './a.module-definition';
+import { AModuleConfig } from './a-config.interface';
+import { A_MODULE_OPTIONS_TOKEN } from './a.constants';
 
 @Injectable()
 export class AService {
-  constructor(@Inject(MODULE_OPTIONS_TOKEN) private options: AModuleConfig) {}
+  constructor(@Inject(A_MODULE_OPTIONS_TOKEN) private options: AModuleConfig) {}
 
   greet(name: string) {
     if (typeof this.options.greeting === 'function') {
