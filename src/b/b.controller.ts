@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { BService } from './b.service';
 
-@Controller('b')
+@Controller()
 export class BController {
   constructor(private bService: BService) {}
 
