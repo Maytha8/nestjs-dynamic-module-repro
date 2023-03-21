@@ -1,8 +1,10 @@
-import { DynamicModule, Module } from '@nestjs/common';
-import { AModuleAsyncConfig, AModuleConfig } from './a-config.interface';
+import {
+  ConfigurableModuleAsyncOptions,
+  DynamicModule,
+  Module,
+} from '@nestjs/common';
+import { AModuleConfig } from './a-config.interface';
 import { ACoreModule } from './a-core.module';
-import { A_MODULE_OPTIONS_TOKEN, A_SERVICE_TOKEN } from './a.constants';
-import { AService } from './a.service';
 
 @Module({})
 export class AModule {
@@ -13,7 +15,9 @@ export class AModule {
     };
   }
 
-  static forRootAsync(options: AModuleAsyncConfig): DynamicModule {
+  static forRootAsync(
+    options: ConfigurableModuleAsyncOptions<AModuleConfig>,
+  ): DynamicModule {
     return {
       module: AModule,
       imports: [ACoreModule.forRootAsync(options)],
