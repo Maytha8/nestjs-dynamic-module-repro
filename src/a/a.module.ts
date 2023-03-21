@@ -8,10 +8,11 @@ import { ACoreModule } from './a-core.module';
 
 @Module({})
 export class AModule {
-  static forRoot(options: AModuleConfig): DynamicModule {
+  static forRoot(options?: AModuleConfig): DynamicModule {
     return {
       module: AModule,
-      imports: [ACoreModule.forRoot(options)],
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      imports: [ACoreModule.forRoot(options!)],
     };
   }
 
